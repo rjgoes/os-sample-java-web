@@ -1,0 +1,74 @@
+body{
+		background-color: #F2F2F3;
+		font-family: 'Lato', sans-serif;
+	}
+
+.navbar{
+	background-color: #3366CC;
+	color: #FFFFFF;
+}
+
+.title{
+	font-family: 'Open Sans', sans-serif;
+	color: black;
+
+}
+
+.btnAdd{
+	background-color: #3366CC;
+	color: white;
+}
+
+.btnSave{
+
+}
+
+.btnAdd:hover, 
+.btnAdd:focus, 
+.btnAdd:active{
+	background-color: #25488e; 
+	color: white; 
+}
+
+.carInfoText{
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+.clear{
+	clear:both;
+}
+
+ .input-disabled{
+ 	background-color:#EBEBE4;
+
+ }
+
+ .floatLeft{
+ 	float: left;
+ }
+
+ .mainPageAlert{
+ 	position: fixed;
+ 	top:50px;
+ 	left:50%;
+ 	z-index: 10;
+ 	opacity: 0.9;
+ }
+
+ .floatLeft{
+ 	float: left;
+ }
+
+ .infoFont{
+ 	font-size: 120%;
+ }
+
+ .infoButtons{
+ 		margin-top:20px;
+ 		margin-right: 10px
+ }
