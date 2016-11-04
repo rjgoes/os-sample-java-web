@@ -14,7 +14,7 @@
 // limitations under the License.
 
 // ============================================================================
-// catalina.policy - Security Policy Permissions for Tomcat
+// catalina.policy - Security Policy Permissions for Tomcat 7
 //
 // This file contains a default set of security policies to be enforced (by the
 // JVM) when Catalina is executed with the "-security" option.  In addition
@@ -23,6 +23,8 @@
 //
 // * Read access to the web application's document root directory
 // * Read, write and delete access to the web application's working directory
+//
+// $Id: catalina.policy 1347048 2012-06-06 18:47:00Z markt $
 // ============================================================================
 
 
@@ -78,17 +80,15 @@ grant codeBase "file:${catalina.home}/bin/tomcat-juli.jar" {
         permission java.lang.RuntimePermission "getClassLoader";
         permission java.lang.RuntimePermission "setContextClassLoader";
 
-        permission java.lang.management.ManagementPermission "monitor";
-
         permission java.util.logging.LoggingPermission "control";
 
         permission java.util.PropertyPermission "java.util.logging.config.class", "read";
         permission java.util.PropertyPermission "java.util.logging.config.file", "read";
-        permission java.util.PropertyPermission "org.apache.juli.AsyncLoggerPollInterval", "read";
-        permission java.util.PropertyPermission "org.apache.juli.AsyncMaxRecordCount", "read";
-        permission java.util.PropertyPermission "org.apache.juli.AsyncOverflowDropType", "read";
-        permission java.util.PropertyPermission "org.apache.juli.ClassLoaderLogManager.debug", "read";
         permission java.util.PropertyPermission "catalina.base", "read";
+        permission java.util.PropertyPermission
+         "org.apache.juli.logging.UserDataHelper.CONFIG", "read";
+        permission java.util.PropertyPermission
+         "org.apache.juli.logging.UserDataHelper.SUPPRESSION_TIME", "read";
 
         // Note: To enable per context logging configuration, permit read access to
         // the appropriate file. Be sure that the logging configuration is
@@ -125,7 +125,7 @@ grant codeBase "file:${catalina.home}/lib/-" {
 
 // These permissions are granted by default to all web applications
 // In addition, a web application will be given a read FilePermission
-// for all files and directories in its document root.
+// and JndiPermission for all files and directories in its document root.
 grant {
     // Required for JNDI lookup of named JDBC DataSource's and
     // javamail named MimePart DataSource used to send mail
@@ -186,13 +186,11 @@ grant {
     permission java.util.PropertyPermission
      "org.apache.tomcat.util.http.ServerCookie.FWD_SLASH_IS_SEPARATOR", "read";
 
-    // Applications using WebSocket need to be able to access these packages
-    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.tomcat.websocket";
-    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.tomcat.websocket.server";
+    // Applications using Comet need to be able to access this package
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.comet";
 
-    // Applications need to access these packages to use the Servlet 4.0 Preview
-    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.servlet4preview";
-    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.servlet4preview.http";
+    // Applications using WebSocket need to be able to access this package
+    permission java.lang.RuntimePermission "accessClassInPackage.org.apache.catalina.websocket";
 };
 
 
@@ -249,13 +247,3 @@ grant codeBase "file:${catalina.home}/webapps/manager/-" {
 //      permission java.net.SocketPermission "*.noaa.gov:80", "connect";
 // };
 
-// To grant permissions for web applications using packed WAR files, use the
-// Tomcat specific WAR url scheme.
-//
-// The permissions granted to the entire web application
-// grant codeBase "war:file:${catalina.base}/webapps/examples.war*/-" {
-// };
-//
-// The permissions granted to a specific JAR
-// grant codeBase "war:file:${catalina.base}/webapps/examples.war*/WEB-INF/lib/foo.jar" {
-// };
