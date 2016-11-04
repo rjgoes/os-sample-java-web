@@ -4,4 +4,66 @@
 
 <web-app>
   <display-name>Sample Java Web Application</display-name>
+  
+   <servlet>
+      <servlet-name>AddCarServlet</servlet-name>
+      <servlet-class>AddCarServlet</servlet-class>
+   </servlet>
+
+	<servlet>
+      <servlet-name>ListServlet</servlet-name>
+      <servlet-class>ListServlet</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <servlet-name>UpdateCarServlet</servlet-name>
+      <servlet-class>UpdateCarServlet</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <servlet-name>RemoveServlet</servlet-name>
+      <servlet-class>RemoveServlet</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <servlet-name>AddTaskServlet</servlet-name>
+      <servlet-class>AddTaskServlet</servlet-class>
+   </servlet>
+   
+   <servlet>
+      <servlet-name>UpdateTaskServlet</servlet-name>
+      <servlet-class>UpdateTaskServlet</servlet-class>
+   </servlet>
+ 
+ 
+
+   <servlet-mapping>
+      <servlet-name>AddCarServlet</servlet-name>
+      <url-pattern>/AddCarServlet</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>ListServlet</servlet-name>
+      <url-pattern>/ListServlet</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>UpdateCarServlet</servlet-name>
+      <url-pattern>/UpdateCarServlet</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>RemoveServlet</servlet-name>
+      <url-pattern>/RemoveServlet</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>AddTaskServlet</servlet-name>
+      <url-pattern>/AddTaskServlet</url-pattern>
+   </servlet-mapping>
+   
+   <servlet-mapping>
+      <servlet-name>UpdateTaskServlet</servlet-name>
+      <url-pattern>/UpdateTaskServlet</url-pattern>
+   </servlet-mapping>
 </web-app>
